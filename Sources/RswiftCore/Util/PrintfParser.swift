@@ -74,9 +74,9 @@ enum LocalizedStringParser {
   static let text: ParsedType = formatPartSpec(nil) <^> oneOrMore(not("%"))
   
   static let keyName = oneOrMore(oneOf("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"))
-  static let refarencePlaceHolder: ParsedType = FormatPart.reference <^> ( string("%#@") *> keyName <* char("@") )
+  static let referencePlaceHolder: ParsedType = FormatPart.reference <^> ( string("%#@") *> keyName <* char("@") )
   
-  static let printfFormatted = zeroOrMore(text <|> refarencePlaceHolder <|> placeHolder)
+  static let printfFormatted = zeroOrMore(text <|> referencePlaceHolder <|> placeHolder)
   
   static func filtered(parts: [FormatPart?]) -> [FormatPart] {
     parts.compactMap { $0 }
