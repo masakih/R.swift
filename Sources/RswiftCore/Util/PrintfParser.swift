@@ -46,6 +46,7 @@ enum LocalizedStringParser {
   static let characterTypePerser = char("c") <|> char("C")
   static let cStringPointerTypePerser = char("s") <|> char("S")
   static let voidPointerTypePerser = char("p")
+  static let noneTypeParser = char("n")
 
   // exchange to Optional<FormatSpecifier>
   static let percentType: ParsedType = formatPartSpec(nil) <^> percent
@@ -56,6 +57,7 @@ enum LocalizedStringParser {
   static let characterType: ParsedType = formatPartSpec(.character) <^> characterTypePerser
   static let cStringPointerType: ParsedType = formatPartSpec(.cStringPointer) <^> cStringPointerTypePerser
   static let voidPointerType: ParsedType = formatPartSpec(.voidPointer) <^> voidPointerTypePerser
+  static let noneType = formatPartSpec(nil) <^> noneTypeParser
 
   static let type = percentType <|>
     objectType <|>
@@ -64,7 +66,8 @@ enum LocalizedStringParser {
     uIntType <|>
     characterType <|>
     cStringPointerType <|>
-    voidPointerType
+    voidPointerType <|>
+    noneType
 
   static let placeHolder = percent *>
     count(0...1, parameter) *>
