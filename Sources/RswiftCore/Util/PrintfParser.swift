@@ -17,6 +17,7 @@ enum LocalizedStringParser {
   static let formatPrecision = string(".") *> zeroOrMore(digit)
   static let fotmatLength = string("hh") <|> string("h") <|>
     string("l") <|> string("ll") <|> string("L") <|>
+    string("ll") <|> string("l") <|> string("L") <|>
     string("q") <|>
     string("z") <|>
     string("j") <|>
