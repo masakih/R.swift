@@ -36,28 +36,28 @@ enum LocalizedStringParser {
     string("j") <|>
     string("t")
 
-  static let objectTypePerser = char("@")
-  static let doubleTypePerser = char("a") <|> char("A") <|>
+  static let objectTypeParser = char("@")
+  static let doubleTypeParser = char("a") <|> char("A") <|>
     char("e") <|> char("E") <|>
     char("f") <|> char("F") <|>
     char("g") <|> char("G")
-  static let intTypePerser = char("d") <|> char("i")
-  static let uIntTypePerser = char("o") <|> char("O") <|> char("u") <|> char("x") <|> char("X")
-  static let characterTypePerser = char("c") <|> char("C")
-  static let cStringPointerTypePerser = char("s") <|> char("S")
-  static let voidPointerTypePerser = char("p")
+  static let intTypeParser = char("d") <|> char("i")
+  static let uIntTypeParser = char("o") <|> char("O") <|> char("u") <|> char("x") <|> char("X")
+  static let characterTypeParser = char("c") <|> char("C")
+  static let cStringPointerTypeParser = char("s") <|> char("S")
+  static let voidPointerTypeParser = char("p")
   static let noneTypeParser = char("n")
 
   // exchange to Optional<FormatSpecifier>
   static let percentType: ParsedType = formatPartSpec(nil) <^> percent
-  static let objectType: ParsedType = formatPartSpec(.object) <^> objectTypePerser
-  static let doubleType: ParsedType = formatPartSpec(.double) <^> doubleTypePerser
-  static let intType: ParsedType = formatPartSpec(.int) <^> intTypePerser
-  static let uIntType: ParsedType = formatPartSpec(.uInt) <^> uIntTypePerser
-  static let characterType: ParsedType = formatPartSpec(.character) <^> characterTypePerser
-  static let cStringPointerType: ParsedType = formatPartSpec(.cStringPointer) <^> cStringPointerTypePerser
-  static let voidPointerType: ParsedType = formatPartSpec(.voidPointer) <^> voidPointerTypePerser
-  static let noneType = formatPartSpec(nil) <^> noneTypeParser
+  static let objectType: ParsedType = formatPartSpec(.object) <^> objectTypeParser
+  static let doubleType: ParsedType = formatPartSpec(.double) <^> doubleTypeParser
+  static let intType: ParsedType = formatPartSpec(.int) <^> intTypeParser
+  static let uIntType: ParsedType = formatPartSpec(.uInt) <^> uIntTypeParser
+  static let characterType: ParsedType = formatPartSpec(.character) <^> characterTypeParser
+  static let cStringPointerType: ParsedType = formatPartSpec(.cStringPointer) <^> cStringPointerTypeParser
+  static let voidPointerType: ParsedType = formatPartSpec(.voidPointer) <^> voidPointerTypeParser
+  static let noneType: ParsedType = formatPartSpec(nil) <^> noneTypeParser
 
   static let type = percentType <|>
     objectType <|>
