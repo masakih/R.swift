@@ -25,7 +25,7 @@ enum LocalizedStringParser {
 
   static let percent = char("%")
 
-  static let parameter = oneOrMore(digit) *> string("$")
+  static let parameter = oneOrMore(digit) <* string("$")
   static let flags = string("-") <|> string("+") <|> string(" ") <|> string("0") <|> string("'") <|> string("#")
   static let width = oneOrMore(digit)
   static let precision = string(".") *> zeroOrMore(digit)
